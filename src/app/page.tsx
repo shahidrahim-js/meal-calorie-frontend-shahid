@@ -40,12 +40,12 @@ export default function HomePage() {
           <div className="h-auto md:h-full md:w-full">
             <span className="box-sizing:border-box display:block overflow:hidden width:initial height:initial 
             background:none opacity:1 border:0 margin:0 padding:0">
-              <Image src="/meal-calorie-tracking.jpg"
+              <Image src="/meal-calorie-tracking.webP"
                 alt="Meal Calorie"
                 width={400}
                 height={400}
                 priority
-                className="h-auto w-3/4.5 object-cover rounded-2xl transition-all animation-duration-[5s]" />
+                className="h-auto w-3/4.5 object-cover rounded-2xl" />
             </span>
           </div>
         </div>
