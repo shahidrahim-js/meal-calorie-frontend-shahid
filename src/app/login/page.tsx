@@ -7,7 +7,7 @@ import {toast} from 'sonner';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation'
 import {useAuthStore} from '@/stores/authStore';
-import { UserFiedls } from '@/types';
+import { LoginUserError, UserFiedls } from '@/types';
 import {LoginFormValues, loginSchema} from '@/lib/validations';
 import { loginUser } from '@/lib/api';
 import { Spinner } from '@/components/ui/spinner';
@@ -41,7 +41,8 @@ function LoginPage() {
       setAuth(data.token, data.user);
       toast.success("Login successfull");
       router.push("/dashboard");
-    } catch (err: unknown) {
+    } catch (error) {
+      const err = error as LoginUserError;
       toast.error(err?.message || "Login failed");
     }
   }
@@ -58,12 +59,12 @@ function LoginPage() {
             className='w-full px-5 flex gap-3 flex-col text-gray-600'
           >
             <div>
-          <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
-          border-gray-300 border py-2 px-2 rounded-md leading-0'
-            {...register(UserFiedls.EMAIL)}
-            type='email'
-            placeholder='Email' />
-            {errors.email && <span className='text-red-400 text-xs'>{errors.email.message}</span>}
+              <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
+              border-gray-300 border py-2 px-2 rounded-md leading-0'
+                {...register(UserFiedls.EMAIL)}
+                type='email'
+                placeholder='Email' />
+              {errors.email && <span className='text-red-400 text-xs'>{errors.email.message}</span>}
             </div>
             <div>
           <div className='relative'>

@@ -4,8 +4,9 @@ import React from 'react';
 import { useMealStore } from '@/stores/mealStore';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { MealInput, mealSchema } from '@/lib/validations';
+import { MealInput, MealOutput, mealSchema } from '@/lib/validations';
 import { getCalories } from '@/lib/api';
+import { CalorieFields, LoginUserError } from '@/types';
 import { toast } from 'sonner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Field } from './ui/field';
@@ -19,7 +20,7 @@ function MealForm() {
     register,
     handleSubmit,
     formState: {errors, isSubmitting}
-  } = useForm<MealInput>({
+  } = useForm<MealInput, MealOutput>({
     resolver: zodResolver(mealSchema),
     defaultValues: {
       servings: 1,
@@ -31,7 +32,8 @@ function MealForm() {
       const data = await getCalories(values);
       setResult(data);
       toast.success("Calories fetched");
-    } catch (error: any) {
+    } catch (err) {
+      const error = err as LoginUserError;
       switch (error.status) {
         case 404:
           toast.error("Dish not found");
@@ -65,7 +67,7 @@ function MealForm() {
         >
           <Field>
             <input
-              {...register("dish_name")}
+              {...register(CalorieFields.DISH_NAME)}
               placeholder="Dish Name"
               className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
                 border-gray-300 border py-2 px-2 rounded-md leading-0 text-gray-900'
@@ -76,7 +78,7 @@ function MealForm() {
             <input
               type="number"
               step="1"
-              {...register("servings")}
+              {...register(CalorieFields.SERVINGS)}
               placeholder='Servings'
               className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
                 border-gray-300 border py-2 px-2 rounded-md leading-0 text-gray-900'

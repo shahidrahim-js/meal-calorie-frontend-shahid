@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff } from "lucide-react";
 import { RegisterFormValues, registerSchema } from '@/lib/validations';
 import { registerUser } from '@/lib/api';
-import { UserFiedls} from '@/types';
+import { LoginUserError, UserFiedls} from '@/types';
 import { useAuthStore } from '@/stores/authStore';
 import { toast } from 'sonner';
 import { Spinner } from '@/components/ui/spinner';
@@ -56,7 +56,8 @@ function RegisterPage() {
       setAuth(data.token, data.user);
       toast.success("Account created successfull");
       router.push("/dashboard");
-    } catch (err: unknown) {
+    } catch (error) {
+      const err = error as LoginUserError;
       toast.error(err?.message || "Registration failed");
     }
   }

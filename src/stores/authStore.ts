@@ -2,12 +2,12 @@
 
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
-import {User} from "@/types";
+import {LoginUser} from "@/types";
 
 interface AuthState {
   token: string | null;
-  user: User | null;
-  setAuth: (token: string, user: User) => void;
+  user: LoginUser | null;
+  setAuth: (token: string, user: LoginUser) => void;
   logout: () => void;
 };
 

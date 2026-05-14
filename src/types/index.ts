@@ -5,7 +5,12 @@ export enum UserFiedls {
   EMAIL = 'email',
   PASSWORD ='password',
   CONF_PASSWORD = 'conf_password'
-}
+};
+
+export enum CalorieFields {
+  DISH_NAME = 'dish_name',
+  SERVINGS = 'servings'
+};
 
 export interface RegisterFormType {
   [UserFiedls.FIRST_NAME]: string;
@@ -27,10 +32,16 @@ export interface User {
   [UserFiedls.EMAIL]: string;
 };
 
+export type LoginUser = Omit<User, 'id'>;
 export interface AuthResponse {
-  message: string;
   token: string;
-  user: User;
+  user: LoginUser
+};
+
+export interface LoginUserError {
+  retryAfter: string;
+  message: string;
+  status: number;
 };
 
 export interface Macronutrients {
@@ -60,8 +71,8 @@ export interface CalorieResponse {
   source: string
   macronutrients_per_serving?: Macronutrients
   total_macronutrients?: Macronutrients;
-  ingredient_breakdown?: IngredientBreakdown;
-}
+  ingredient_breakdown?: IngredientBreakdown[];
+};
 
 export interface RateLimitInfo {
   limit: number

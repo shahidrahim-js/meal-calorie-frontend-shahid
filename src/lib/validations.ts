@@ -1,5 +1,5 @@
 import {z} from "zod";
-import { UserFiedls } from "@/types";
+import { CalorieFields, UserFiedls } from "@/types";
 
 export const registerSchema = z.object({
   [UserFiedls.FIRST_NAME]: z.string().min(1, "First name required"),
@@ -14,11 +14,12 @@ export const loginSchema = z.object({
 });
 
 export const mealSchema = z.object({
-  dish_name: z.string().min(1, "Dish name required").max(120),
-  servings: z.coerce.number().positive("Servings must be greater than 0"),
+  [CalorieFields.DISH_NAME]: z.string().min(1, "Dish name required").max(120),
+  [CalorieFields.SERVINGS]: z.coerce.number().positive("Servings must be greater than 0"),
 });
 
 // Infer the type from the schema
 export type RegisterFormValues = z.infer<typeof registerSchema>;
 export type LoginFormValues = z.infer<typeof loginSchema>;
-export type MealInput = z.infer<typeof mealSchema>;
+export type MealInput = z.input<typeof mealSchema>;
+export type MealOutput = z.output<typeof mealSchema>;

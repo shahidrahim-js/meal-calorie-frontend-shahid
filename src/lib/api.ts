@@ -1,4 +1,6 @@
 import { useAuthStore } from "@/stores/authStore";
+import { AuthResponse, CalorieResponse } from "@/types";
+import { LoginFormValues, MealInput, RegisterFormValues } from "./validations";
 
 const API = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -41,21 +43,21 @@ export async function apiFetch<T>(
   return data;
 };
 
-export const registerUser = (body: unknown) => (
+export const registerUser = (body: RegisterFormValues): Promise<AuthResponse> => (
   apiFetch('/api/auth/register', {
     method: 'POST',
     body: JSON.stringify(body),
   })
 );
 
-export const loginUser = (body: unknown) => (
+export const loginUser = (body: LoginFormValues): Promise<AuthResponse> => (
   apiFetch('/api/auth/login', {
     method: 'POST',
     body: JSON.stringify(body),
   })
 );
 
-export const getCalories = (body: unknown) => (
+export const getCalories = (body: MealInput): Promise<CalorieResponse> => (
   apiFetch('/api/get-calories', {
     method: 'POST',
     body: JSON.stringify(body),
