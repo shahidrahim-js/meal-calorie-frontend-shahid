@@ -40,8 +40,7 @@ export default function HomePage() {
           <div className="h-auto md:h-full md:w-full">
             <span className="box-sizing:border-box display:block overflow:hidden width:initial height:initial 
             background:none opacity:1 border:0 margin:0 padding:0">
-              {/* diet-plan-schedule.png */}
-              <Image src="/bmi.jpg"
+              <Image src="/meal-calorie-tracking.jpg"
                 alt="Meal Calorie"
                 width={400}
                 height={400}

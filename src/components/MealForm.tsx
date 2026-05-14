@@ -94,7 +94,8 @@ function MealForm() {
           <Field>
             <Button type="submit"
               disabled={isSubmitting}
-              className='cursor-pointer  border-b-amber-500 text-red-950 bg-amber-300 hover:bg-amber-500 transition-all py-5'>
+              className='cursor-pointer  border-b-amber-500 text-red-950 bg-amber-300 hover:bg-amber-500
+              transition-all py-5'>
               Search Details {isSubmitting ? <Spinner data-icon="inline-start" /> : ''}
             </Button >
           </Field>

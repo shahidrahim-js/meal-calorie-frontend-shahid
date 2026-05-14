@@ -167,12 +167,17 @@ function Header() {
                   </>
                 ) : (
                   <>
+                    <div className='text-center border-b-gray-300 border-b pb-3 hover:text-red-800'>
+                       <Link href="/">
+                          Home
+                      </Link>
+                    </div>
                     <Button asChild variant="outline" className='dark:bg-gray-200 dark:text-red-800'>
                       <Link href="/login">
                         Login
                       </Link>
                     </Button>
-                    <Button asChild className='bg-red-800 text-white'>
+                    <Button asChild className='bg-amber-400 text-red-900'>
                       <Link href="/register">
                         Register
                       </Link>

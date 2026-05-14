@@ -9,7 +9,7 @@ import MealForm from '@/components/MealForm';
 function CaloriesPage() {
   useAuthGuard()
   const result = useMealStore((state) => state.lastResult);
-
+  
   return (
     <div className="container py-10 flex items-center flex-col">
       <MealForm />
