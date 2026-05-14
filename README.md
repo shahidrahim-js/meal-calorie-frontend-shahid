@@ -4,15 +4,39 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+# Setup
+
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+# Environment
+
+NEXT_PUBLIC_API_BASE_URL=...
+
+# Features
+
+- Auth
+- JWT persistence
+- Protected routes
+- Calorie lookup
+- Dark mode
+- Responsive UI
+
+# UI Flow
+
+   / [Home Page]
+   ↓
+/login [Login Page]
+   ↓
+/dashboard  [Dashboard Page]
+   ↓
+/calories  [Calories Page]
+   ↓
+Result Card  [On Calories Page]
+   ↓
+History Saved [On Dashboard Page]
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -31,6 +55,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel
+[Click Here To See](https://meal-calorie-frontend-shahid-pi.vercel.app/)

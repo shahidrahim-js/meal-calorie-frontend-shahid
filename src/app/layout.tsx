@@ -16,13 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const instrumentSerif = Instrument_Serif({
-//   variable: "--font-instrument-serif",
-//   subsets: ["latin"],
-//   style: ["italic", "normal"],
-//   weight: ["400"]
-// });
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -49,7 +42,7 @@ export default function RootLayout({
           attribute='class'
           defaultTheme='system'>
           <Header />
-          <main className="max-w-[95vw] w-dvw pt-24 px-8 xl:px-16 mx-auto min-h-dvh relative">
+          <main className="max-w-dvw block box-border pt-24 px-5 xl:px-16 min-h-dvh relative">
             {children}
           </main>
           <Toaster richColors />
@@ -57,4 +50,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};

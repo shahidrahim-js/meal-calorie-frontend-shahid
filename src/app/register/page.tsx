@@ -1,6 +1,11 @@
 "use client"
 
-import React, {ChangeEvent, useCallback, useEffect, useState} from 'react';
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -14,6 +19,7 @@ import { toast } from 'sonner';
 import { Spinner } from '@/components/ui/spinner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Field, FieldLabel } from '@/components/ui/field';
 
 function RegisterPage() {
   const [confPassword, setConfPassword] = useState('');
@@ -65,53 +71,68 @@ function RegisterPage() {
   return (
     <>
       <div className='flex items-center justify-center min-h-[85vh] pb-5'>
-        <Card className='bg-white w-full md:w-1/3 rounded-2xl flex justify-center flex-col py-5 shadow-md'>
+        <Card className='bg-white w-full md:w-1/2 rounded-2xl flex justify-center flex-col py-5 shadow-md'>
           <CardHeader className="border-b border-b-gray-300">
-            <CardDescription>Create Account to start tracking meal calories</CardDescription>
+            <CardDescription>Create Account to start tracking meal calories.</CardDescription>
             <CardTitle className="text-2xl dark:text-gray-900">Register Now</CardTitle>
           </CardHeader>
           <CardContent>
             <form className='w-full px-5 flex gap-3 flex-col text-gray-600' onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 border-gray-300 border py-2 px-2 rounded-md leading-0'
-                {...register(UserFiedls.FIRST_NAME)}
-                placeholder='First Name' />
+              <Field className='py-0.3'>
+                <FieldLabel className='font-medium'>
+                  First Name <span className="text-destructive">*</span>
+                </FieldLabel>
+                <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 border-gray-300 border py-2 px-2 rounded-md leading-0'
+                  {...register(UserFiedls.FIRST_NAME)}
+                  placeholder='First Name' />
                 {errors.first_name && <span className='text-red-400 text-xs'>{errors.first_name.message}</span>}
-            </div>
-            <div>
+              </Field>
+              <Field className='py-0.3'>
+                <FieldLabel className='font-medium'>
+                  Last Name <span className="text-destructive">*</span>
+                </FieldLabel>
                 <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 border-gray-300 border py-2 px-2 rounded-md leading-0'
                   {...register(UserFiedls.LAST_NAME)}
                   placeholder='Last Name' />
                   {errors.last_name && <span className='text-red-400 text-xs'>{errors.last_name.message}</span>}
-            </div>
-            <div>
+              </Field>
+              <Field className='py-0.3'>
+                <FieldLabel className='font-medium'>
+                  Email <span className="text-destructive">*</span>
+                </FieldLabel>
                 <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 border-gray-300 border py-2 px-2 rounded-md leading-0'
                   {...register(UserFiedls.EMAIL)}
                   placeholder='Email' />
                 {errors.email && <span className='text-red-400 text-xs'>{errors.email.message}</span>}
-            </div>
-            <div>
-              <div className='relative'>
-                <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
+              </Field>
+              <Field className='py-0.3'>
+                <FieldLabel className='font-medium'>
+                  Password <span className="text-destructive">*</span>
+                </FieldLabel>
+                <div className='relative'>
+                  <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 
                   border-gray-300 border py-2 px-2 rounded-md'
-                  {...register(UserFiedls.PASSWORD)}
-                  type={showPassword ? "text" : "password"}
-                  placeholder='Password' />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  className="cursor-pointer absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
-                >
-                  {showPassword ? (
+                    {...register(UserFiedls.PASSWORD)}
+                    type={showPassword ? "text" : "password"}
+                    placeholder='Password' />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="cursor-pointer absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? (
                     <EyeOff size={20} />
-                  ) : (
-                    <Eye size={20} />
-                  )}
-                </button>
-              </div>
+                    ) : (
+                      <Eye size={20} />
+                    )}
+                  </button>
+                </div>
                 {errors.password && <span className='text-red-400 text-xs'>{errors.password.message}</span>}
-            </div>
-            <div>
+             </Field>
+             <Field className='py-0.3'>
+                <FieldLabel className='font-medium'>
+                  Confirm Password <span className="text-destructive">*</span>
+                </FieldLabel>
               <input className='w-full focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 border-gray-300 border py-2 px-2 rounded-md'
                 type="password"
                 name={UserFiedls.CONF_PASSWORD}
@@ -119,11 +140,11 @@ function RegisterPage() {
                 value={confPassword}
                 onChange={handleChange} />
                 {isPasswordNotMatch && <span className='text-red-400 text-xs'>{'Passwords do not match'}</span>}
-            </div>
+            </Field>
             <div className='w-full'>
               <Button type="submit"
                 disabled={isSubmitting}
-                className='w-full cursor-pointer text-white bg-red-800 hover:bg-red-900 transition-all py-5'>
+                className='w-full cursor-pointer border-b-amber-500 text-red-950 bg-amber-300 hover:bg-amber-500 transition-all py-5'>
                 Register {isSubmitting ? <Spinner data-icon="inline-start" /> : ''}
               </Button >
             </div>

@@ -34,8 +34,8 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 w-full z-50 border-b backdrop-blur transition-all bg-amber-50
-     dark:bg-cyan-950 flex items-center justify-between">
+    <header className="fixed top-0 w-full z-50 backdrop-blur transition-all bg-amber-50 dark:border-b-indigo-900
+     dark:bg-indigo-950 flex items-center justify-between shadow-accent-foreground border-b-2 border-amber-400">
       <div className="flex h-16 items-center justify-between pl-10">
         <Link href='/' className=''>
         <Image src="/meal-calorie-count-generator-logo.svg"
@@ -54,10 +54,12 @@ function Header() {
               <div className='col-start-8 col-end-8 flex items-center justify-center gap-1'>
                 {
                   navLinks.map((link) => (
-                    <div key={link.href} className='px-2 border-r-amber-10 border-r'>
+                    <div key={link.href} className='px-2'>
                       <Link
                         href={link.href}
-                        className={`text-gray-600 dark:text-gray-50 text-sm mx-2 sm:mx-4 capitalize tracking-wide hover:text-red-800 transition-all dark:hover:text-red-400 border-b-gray-400 border-b-2 dark:border-b-white hover:border-b-red-800 dark:hover:border-b-red-400 ${
+                        className={`text-gray-600 dark:text-gray-50 text-sm mx-2 sm:mx-4 capitalize tracking-wide
+                          hover:text-red-800 transition-all dark:hover:text-amber-300 
+                            ${
                           pathname === link.href
                             ? "font-semibold text-red-800 border-b-red-800"
                             : "text-gray-600"
@@ -93,10 +95,14 @@ function Header() {
           ) : (
             <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
               <div className='px-5'><ThemeToggle /></div>
+              <Link href='/' className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide 
+                    hover:text-red-800 dark:hover:text-amber-300 transition-all">
+                    Home
+                  </Link>
               {
                 pathname !== '/login' && (
                   <Link href='/login' className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide 
-                    hover:text-red-800 transition-all dark:hover:text-red-400">
+                    hover:text-red-800 dark:hover:text-amber-300 transition-all">
                     Login
                   </Link>
                 )
@@ -104,8 +110,10 @@ function Header() {
               {
                 pathname !== '/register' && (
                   <Link href='/register' className="font-medium tracking-wide py-2 px-5 sm:px-8 border border-red-800 
-                    dark:border-red-500 dark:hover:border-red-800 text-red-800 dark:text-red-500 bg-white-500 
-                      outline-none rounded-l-full rounded-r-full capitalize hover:bg-red-800 dark:hover:bg-red-800 hover:text-white dark:hover:text-white transition-all hover:shadow-red-950">
+                    dark:border-amber-300 dark:hover:border-amber-400 hover:border-amber-400 text-red-800 
+                    dark:text-amber-300 bg-white-500 outline-none rounded-l-full rounded-r-full capitalize 
+                    hover:bg-amber-300 dark:hover:bg-amber-400 hover:text-red-950 dark:hover:text-red-950
+                    transition-all">
                     Register
                   </Link>
                 )

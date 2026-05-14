@@ -9,7 +9,7 @@ import { getCalories } from '@/lib/api';
 import { CalorieFields, LoginUserError } from '@/types';
 import { toast } from 'sonner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Field } from './ui/field';
+import { Field, FieldLabel } from './ui/field';
 import { Button } from './ui/button';
 import { Spinner } from './ui/spinner';
 
@@ -54,10 +54,10 @@ function MealForm() {
 
   return (
     <Card className="w-full sm:max-w-lg">
-      <CardHeader>
-        <CardTitle>Mael Calorie</CardTitle>
+      <CardHeader className="border-b border-b-gray-300">
+        <CardTitle className='text-2xl text-gray-800 dark:text-white'>Mael Calories</CardTitle>
         <CardDescription>
-          Know your Mael Calories.
+          Know your dish calories.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -65,7 +65,10 @@ function MealForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-4"
         >
-          <Field>
+          <Field className='py-0.5'>
+            <FieldLabel className='font-medium'>
+              Dish Name <span className="text-destructive">*</span>
+            </FieldLabel>
             <input
               {...register(CalorieFields.DISH_NAME)}
               placeholder="Dish Name"
@@ -74,7 +77,10 @@ function MealForm() {
             />
             {errors.dish_name && <span className='text-red-400 text-xs'>{errors.dish_name.message}</span>}
           </Field>
-          <Field>
+          <Field className='py-0.5'>
+            <FieldLabel className='font-medium'>
+              Servings Quantity <span className="text-destructive">*</span>
+            </FieldLabel>
             <input
               type="number"
               step="1"
@@ -88,7 +94,7 @@ function MealForm() {
           <Field>
             <Button type="submit"
               disabled={isSubmitting}
-              className='cursor-pointer text-white bg-red-800 hover:bg-red-900 transition-all py-5'>
+              className='cursor-pointer  border-b-amber-500 text-red-950 bg-amber-300 hover:bg-amber-500 transition-all py-5'>
               Search Details {isSubmitting ? <Spinner data-icon="inline-start" /> : ''}
             </Button >
           </Field>

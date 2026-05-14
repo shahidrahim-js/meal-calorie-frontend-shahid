@@ -7,6 +7,7 @@ import { useMealStore } from '@/stores/mealStore';
 import { UserFiedls } from '@/types';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { instrumentSerif } from '@/lib/fonts';
 
 function DashboardPage() {
   useAuthGuard();
@@ -15,9 +16,13 @@ function DashboardPage() {
 
   return (
     <>
-    <div className='conatiner py-2 mb-5'>
-      <h1 className='text-3xl font-bold'>
-        Welcome, {user?.[UserFiedls.FIRST_NAME]} {user?.[UserFiedls.LAST_NAME]}
+    <div className='conatiner py-3.5  mb-5'>
+      <h1 className={`text-3xl font-bold text-amber-500 dark:text-amber-400 ${instrumentSerif.className}`}>
+        Welcome,
+        {" "}
+        <span className={`bg-red-200 text-red-950 px-1 py-0.5 ${instrumentSerif.className}`}>
+          {user?.[UserFiedls.FIRST_NAME]} {user?.[UserFiedls.LAST_NAME]}
+        </span>
       </h1>
     </div>
     <Card className="w-full sm:max-w-l px-5 mb-5 max-h-[70vh] min-h-[60vh]">

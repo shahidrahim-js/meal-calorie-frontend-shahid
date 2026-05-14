@@ -2,7 +2,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { AuthResponse, CalorieResponse } from "@/types";
 import { LoginFormValues, MealInput, RegisterFormValues } from "./validations";
 
-const API = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function apiFetch<T>(
   endpoint: string,
@@ -10,7 +10,7 @@ export async function apiFetch<T>(
 ): Promise<T> {
   const token = useAuthStore.getState().token;
 
-  const res = await fetch(`${API}${endpoint}`, {
+  const res = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
