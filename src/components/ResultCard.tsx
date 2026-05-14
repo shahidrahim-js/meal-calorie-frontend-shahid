@@ -22,7 +22,7 @@ export function ResultCard({
       <CardHeader className="border-b border-b-gray-300">
         <CardTitle className="text-2xl">Result for {result?.dish_name?.toUpperCase()}</CardTitle>
         <CardDescription>
-          Your dis details
+          Your dish details
         </CardDescription>
       </CardHeader>
       <CardContent>
