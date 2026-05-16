@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Meal Calorie Count Generator
 
 ## Getting Started
 
@@ -17,41 +17,38 @@ NEXT_PUBLIC_API_BASE_URL=...
 
 # Features
 
-- Auth
+- Authentication
 - JWT persistence
 - Protected routes
-- Calorie lookup
+- Calorie Search
+- Meal History
 - Dark mode
 - Responsive UI
 
 # UI Flow
 
-   / [Home Page]
+-   / [Home Page]
    ↓
-/login [Login Page]
+- /register or /login [Register/Login Page]
    ↓
-/dashboard  [Dashboard Page]
+- /dashboard  [Dashboard Page]
    ↓
-/calories  [Calories Page]
+- /calories  [Calories Page]
    ↓
-Result Card  [On Calories Page]
+- Result Card  [On Calories Page]
    ↓
-History Saved [On Dashboard Page]
+- History Saved [On Dashboard Page]
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Zustand for lightweight global state
+- App Router for SSR support
+- Tailwind
+- shadcn/ui
+- React hook form
+- Zod for schema validation
 
 ## Deploy on Vercel
 
